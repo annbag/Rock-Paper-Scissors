@@ -45,6 +45,10 @@ function setGameElements() {
       break;
     case 'ended': 
         newGameBtn.innerText = 'Play again';
+        playerPickElem.innerText = "Player selection";
+        computerPickElem.innerText = "Computer selection";
+        playerResultElem.innerText = "Player score";
+        computerResultElem.innerText = "Computer score";
     case 'notStarted':
     default:
         newGameElem.style.display = 'block';
@@ -52,6 +56,8 @@ function setGameElements() {
         resultsElem.style.display = 'none';
   }
 }
+
+setGameElements();
  //rozpoczęcie gry
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
@@ -68,11 +74,6 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     setGamePoints(); 
   }
 
-}
-
-//wybór gracza
-function playerPick(playerPick) {
-    console.log(playerPick);
 }
 
 //losowanie wyboru komputera 
