@@ -45,7 +45,9 @@ function setGameElements() {
       break;
     case 'ended': 
         newGameBtn.innerText = 'Play again';
-        playerPickElem.innerText = "Player selection";
+
+ 		//powoduje, że po kliknięciu play again wyświetla się w tabelce to co w " "
+        playerPickElem.innerText = "Player selection"; 
         computerPickElem.innerText = "Computer selection";
         playerResultElem.innerText = "Player score";
         computerResultElem.innerText = "Computer score";
@@ -56,7 +58,7 @@ function setGameElements() {
         resultsElem.style.display = 'none';
   }
 }
-
+// wywołanie funkcji
 setGameElements();
  //rozpoczęcie gry
 var playerPointsElem = document.getElementById('js-playerPoints'),
