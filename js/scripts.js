@@ -4,7 +4,6 @@ var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
 
-//po kliknięciu działanie przycisków rock, paper, scissors
 var pickRock = document.getElementById('js-playerPick_rock'),
      pickPaper = document.getElementById('js-playerPick_paper'),
      pickScissors = document.getElementById('js-playerPick_scissors');
@@ -19,8 +18,7 @@ pickScissors.addEventListener('click', function() {
 	playerPick('scissors') 
 });
 
-//logika gry 
-var gameState = 'notStarted',  //started // ended
+var gameState = 'notStarted',  
     player = {
         name: '',
         score: 0
@@ -29,24 +27,19 @@ var gameState = 'notStarted',  //started // ended
         score: 0
     };
 
-//wyświetlanie elementów gry
 var newGameElem = document.getElementById('js-newGameElement'),
     pickElem = document.getElementById('js-playerPickElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
-//gameState może przyjąc kilka wartości -zależnie od tego, 
-//czy gra nie została jeszcze rozpoczęta, jest w trakcie czy została zakończona
 function setGameElements() {
   switch(gameState) {
-    case 'started': //widzimy tylko wybór przedmiotu i tabele wyników
+    case 'started': 
         newGameElem.style.display = 'none';
         pickElem.style.display = 'block';
         resultsElem.style.display = 'block';
       break;
     case 'ended': 
         newGameBtn.innerText = 'Play again';
-
- 		//powoduje, że po kliknięciu play again wyświetla się w tabelce to co w " "
         playerPickElem.innerText = "Player selection"; 
         computerPickElem.innerText = "Computer selection";
         playerResultElem.innerText = "Player score";
@@ -58,9 +51,8 @@ function setGameElements() {
         resultsElem.style.display = 'none';
   }
 }
-// wywołanie funkcji
 setGameElements();
- //rozpoczęcie gry
+
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
@@ -78,8 +70,6 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
 
 }
 
-//losowanie wyboru komputera 
-//Math.floor(Math.random()*3)--> losowa liczba całkowita (0, 1 lub 2)
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
@@ -97,9 +87,7 @@ function playerPick(playerPick) {
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
 
-//PRZYZNAWANIE PUNKTÓW!!!
     checkRoundWinner(playerPick, computerPick);
-
 }
 
 function checkRoundWinner(playerPick, computerPick) {
@@ -113,7 +101,6 @@ function checkRoundWinner(playerPick, computerPick) {
         (computerPick == 'rock' &&  playerPick == 'scissors') ||
         (computerPick == 'scissors' &&  playerPick == 'paper') ||
         (computerPick == 'paper' &&  playerPick == 'rock')) {
-
         winnerIs = 'computer';
     }
 
@@ -130,14 +117,12 @@ function checkRoundWinner(playerPick, computerPick) {
     }
 }
 
-//aktualizacja wyniku
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
 
 function checkScore() {
-
     if (computer.score == 10) {
     	alert('Computer win!');
     	gameState = 'ended';
